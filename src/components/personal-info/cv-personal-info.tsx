@@ -5,7 +5,7 @@ import MiscInfo from "./misc-info";
 class CVPersonalInfo extends React.Component {
   render() {
     return (
-      <div className="bg-sky-100 grid grid-cols-2 gap-40">
+      <div className="grid grid-cols-2 gap-40">
         <FullName fullname="Bob Smith" />
         <MiscInfo
           links={{
