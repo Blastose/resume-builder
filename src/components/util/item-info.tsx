@@ -10,7 +10,7 @@ function ItemInfo(props: ItemInfoInterface) {
 
       <div className="flex flex-col leading-none text-right">
         <div className="font-medium">
-          {props.start}-{props.end}
+          {props.start} - {props.end}
         </div>
         <div className="italic text-sm">{props.location}</div>
       </div>
