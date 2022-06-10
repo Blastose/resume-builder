@@ -1,20 +1,15 @@
 import EducationItemInterface from "../interfaces/education-item-interface";
+import ItemInfo from "../util/item-info";
 
 function EducationItem(props: EducationItemInterface) {
   return (
-    <div className="flex justify-between">
-      <div className="flex flex-col leading-tight">
-        <div className="font-bold">{props.institution}</div>
-        <div className="italic text-sm">{props.degree}</div>
-      </div>
-
-      <div className="flex flex-col leading-none text-right">
-        <div className="font-medium">
-          {props.start}-{props.end}
-        </div>
-        <div className="italic text-sm">{props.location}</div>
-      </div>
-    </div>
+    <ItemInfo
+      name={props.institution}
+      sub={props.degree}
+      start={props.start}
+      end={props.end}
+      location={props.location}
+    />
   );
 }
 
