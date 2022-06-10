@@ -7,7 +7,7 @@ function MiscInfo(props: {
   contactInfo: { phoneNumber: string; email: string };
 }) {
   return (
-    <div className="flex gap-9 justify-self-end">
+    <div className="flex gap-9 justify-self-end leading-tight">
       <ContactInfo
         phoneNumber={props.contactInfo.phoneNumber}
         email={props.contactInfo.email}

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Links(props: { linkedin: Link; github: Link; website: Link }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col leading-tight">
       <div className="flex gap-2 items-center">
         <FontAwesomeIcon icon={["fab", "linkedin-in"]} />
         <a href={props.linkedin.href} className="text-blue-600">
