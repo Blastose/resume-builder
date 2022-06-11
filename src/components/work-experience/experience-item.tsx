@@ -3,7 +3,7 @@ import ItemInfo from "../util/item-info";
 
 function ExperienceItem(props: ExperienceItemInterface) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 ml-3">
       <ItemInfo
         name={props.company}
         sub={props.jobTitle}

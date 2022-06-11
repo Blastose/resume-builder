@@ -31,7 +31,7 @@ class CVEducation extends React.Component {
       <div className="flex flex-col gap-2">
         <Section title="Education" icon={["fas", "graduation-cap"]} />
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 ml-3">
           {this.educationItems.map((item, index) => {
             return <EducationItem {...item} key={index} />;
           })}
