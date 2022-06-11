@@ -6,7 +6,7 @@ function Section(props: {
   icon: [type: IconPrefix, name: IconName];
 }) {
   return (
-    <div className="flex gap-2 items-center bg-sky-800 self-start px-2 text-white">
+    <div className="flex gap-2 items-center bg-sky-700 self-start px-2 text-white">
       <FontAwesomeIcon icon={props.icon} />
       <div className="font-semibold">{props.title}</div>
     </div>

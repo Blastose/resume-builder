@@ -7,12 +7,14 @@ function Links(props: { linkedin: Link; github: Link; website: Link }) {
       <div className="flex gap-2 items-center">
         <FontAwesomeIcon icon={["fab", "linkedin-in"]} />
         <a href={props.linkedin.href} className="text-blue-600">
+          <span>/ </span>
           {props.linkedin.text}
         </a>
       </div>
       <div className="flex gap-2 items-center">
         <FontAwesomeIcon icon={["fab", "github"]} />
         <a href={props.github.href} className="text-blue-600">
+          <span>/ </span>
           {props.github.text}
         </a>
       </div>
