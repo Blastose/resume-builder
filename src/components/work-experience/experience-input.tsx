@@ -66,7 +66,6 @@ class ExperienceInput extends React.Component<
           name="location"
           index={this.props.index}
         />
-        {/* textarea */}
         <InputTextareaMaker
           inputId={`textarea${this.props.index}`}
           labelText="Points"
