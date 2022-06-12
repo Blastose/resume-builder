@@ -1,5 +1,5 @@
 type OnChangeFunction = (
-  event: React.ChangeEvent<HTMLInputElement>,
+  newValue: string | string[],
   name: string,
   index?: number
 ) => void;
