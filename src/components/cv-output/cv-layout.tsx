@@ -28,14 +28,34 @@ class CVLayout extends React.Component<{}, CVState> {
   render() {
     return (
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="bg-sky-900 p-4">
+        <div className="bg-sky-700 p-4">
           <PersonalInfoInput
             personalInfo={this.state.personalInfo}
             onChangeFunction={this.onChange}
           />
         </div>
         <div className="bg-white h-min py-4 px-8 flex flex-col gap-4 w-[720px]">
-          <CVPersonalInfo {...this.state.personalInfo} />
+          <CVPersonalInfo
+            fullName={this.state.personalInfo.fullName}
+            links={{
+              linkedin: {
+                href: this.state.personalInfo.linkedinHref,
+                text: this.state.personalInfo.linkedinText,
+              },
+              github: {
+                href: this.state.personalInfo.githubHref,
+                text: this.state.personalInfo.githubText,
+              },
+              website: {
+                href: this.state.personalInfo.websiteHref,
+                text: this.state.personalInfo.websiteText,
+              },
+            }}
+            contactInfo={{
+              phoneNumber: this.state.personalInfo.phoneNumber,
+              email: this.state.personalInfo.email,
+            }}
+          />
           <CVEducation />
           <CVExperience />
           <CVProject />

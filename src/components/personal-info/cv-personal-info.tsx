@@ -10,13 +10,22 @@ class CVPersonalInfo extends React.Component<PersonalInfoInterface, {}> {
         <FullName fullname={this.props.fullName} />
         <MiscInfo
           links={{
-            linkedin: { href: "https://www.google.com", text: "linkedin" },
-            github: { href: "https://www.google.com", text: "github" },
-            website: { href: "https://www.google.com", text: "mywebsite" },
+            linkedin: {
+              href: this.props.links.linkedin.href,
+              text: this.props.links.linkedin.text,
+            },
+            github: {
+              href: this.props.links.github.href,
+              text: this.props.links.github.text,
+            },
+            website: {
+              href: this.props.links.website.href,
+              text: this.props.links.website.text,
+            },
           }}
           contactInfo={{
-            phoneNumber: "+1-444-444-4444",
-            email: "myemail@me.com",
+            phoneNumber: this.props.contactInfo.phoneNumber,
+            email: this.props.contactInfo.email,
           }}
         />
       </div>

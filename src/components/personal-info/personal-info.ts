@@ -1,37 +1,24 @@
-import Link from "../interfaces/link";
-
 class PersonalInfo {
   fullName: string;
-  links: {
-    linkedin: Link;
-    github: Link;
-    website: Link;
-  };
-  contactInfo: {
-    phoneNumber: string;
-    email: string;
-  };
+  linkedinHref: string;
+  linkedinText: string;
+  githubHref: string;
+  githubText: string;
+  websiteHref: string;
+  websiteText: string;
+  phoneNumber: string;
+  email: string;
 
   constructor() {
     this.fullName = "";
-    this.links = {
-      linkedin: {
-        href: "",
-        text: "",
-      },
-      github: {
-        href: "",
-        text: "",
-      },
-      website: {
-        href: "",
-        text: "",
-      },
-    };
-    this.contactInfo = {
-      phoneNumber: "",
-      email: "",
-    };
+    this.linkedinHref = "";
+    this.linkedinText = "";
+    this.githubHref = "";
+    this.githubText = "";
+    this.websiteHref = "";
+    this.websiteText = "";
+    this.phoneNumber = "";
+    this.email = "";
   }
 }
 
