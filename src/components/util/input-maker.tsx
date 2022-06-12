@@ -1,6 +1,6 @@
 import InputInterface from "../interfaces/input-interface";
 
-function InputMaker(props: InputInterface & { name: string }) {
+function InputMaker(props: InputInterface & { name: string; index?: number }) {
   return (
     <div className="flex flex-col gap-2">
       <label className="text-white" htmlFor={props.inputId}>
@@ -11,7 +11,9 @@ function InputMaker(props: InputInterface & { name: string }) {
         type="text"
         id={props.inputId}
         value={props.inputValue}
-        onChange={(event) => props.onChangeFunction(event, props.name)}
+        onChange={(event) =>
+          props.onChangeFunction(event, props.name, props.index)
+        }
       />
     </div>
   );

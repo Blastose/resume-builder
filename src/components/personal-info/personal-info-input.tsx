@@ -13,6 +13,7 @@ class PersonalInfoInput extends React.Component<
   render() {
     return (
       <div className="flex flex-col">
+        <h2 className="text-white text-3xl">Personal info</h2>
         {/* Maybe use a loop instead of writing by hand all the inputs */}
         <InputMaker
           inputId="fullName"

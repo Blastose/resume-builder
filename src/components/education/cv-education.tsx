@@ -1,38 +1,16 @@
 import React from "react";
 import Section from "../util/cv-section";
 import EducationItem from "./education-item";
-import EducationItemInterface from "../interfaces/education-item-interface";
+import EducationInterface from "../interfaces/education-interface";
 
-class CVEducation extends React.Component {
-  educationItems: EducationItemInterface[];
-
-  constructor(props: any) {
-    super(props);
-    this.educationItems = [
-      {
-        institution: "University of America",
-        degree: "BSc Computing Science",
-        start: "2017",
-        end: "2022",
-        location: "Seattle, WA",
-      },
-      {
-        institution: "University of Canada",
-        degree: "BASc Engineering Science",
-        start: "2012",
-        end: "2017",
-        location: "Toronto, ON",
-      },
-    ];
-  }
-
+class CVEducation extends React.Component<EducationInterface, {}> {
   render() {
     return (
       <div className="flex flex-col gap-2">
         <Section title="Education" icon={["fas", "graduation-cap"]} />
 
         <div className="flex flex-col gap-2 ml-3">
-          {this.educationItems.map((item, index) => {
+          {this.props.educationItems.map((item, index) => {
             return <EducationItem {...item} key={index} />;
           })}
         </div>
