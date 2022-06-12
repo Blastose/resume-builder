@@ -10,11 +10,14 @@ import EducationItemInterface from "../interfaces/education-item-interface";
 import ExperienceItemInterface from "../interfaces/experience-item-interface";
 import ExperienceInputs from "../work-experience/experience-inputs";
 import EducationInputs from "../education/education-inputs";
+import ProjectInputs from "../project/project-inputs";
+import ProjectItemInterface from "../interfaces/project-item-interface";
 
 interface CVState {
   personalInfo: PersonalInfo;
   educationItems: EducationItemInterface[];
   experienceItems: ExperienceItemInterface[];
+  projectItems: ProjectItemInterface[];
 }
 
 class CVLayout extends React.Component<{}, CVState> {
@@ -24,6 +27,7 @@ class CVLayout extends React.Component<{}, CVState> {
       personalInfo: new PersonalInfo(),
       educationItems: [] as EducationItemInterface[],
       experienceItems: [] as ExperienceItemInterface[],
+      projectItems: [] as ProjectItemInterface[],
     };
     this.onChange = this.onChange.bind(this);
     this.onChangeEducation = this.onChangeEducation.bind(this);
@@ -33,6 +37,10 @@ class CVLayout extends React.Component<{}, CVState> {
     this.onChangeExperience = this.onChangeExperience.bind(this);
     this.addExperienceItem = this.addExperienceItem.bind(this);
     this.removeExperienceItem = this.removeExperienceItem.bind(this);
+
+    this.onChangeProject = this.onChangeProject.bind(this);
+    this.addProjectItem = this.addProjectItem.bind(this);
+    this.removeProjectItem = this.removeProjectItem.bind(this);
   }
 
   onChange(newValue: string, name: string): void {
@@ -104,6 +112,39 @@ class CVLayout extends React.Component<{}, CVState> {
     }));
   }
 
+  onChangeProject(
+    newValue: string | string[],
+    name: string,
+    index?: number
+  ): void {
+    // Hack to make index required
+    if (index === undefined) {
+      return;
+    }
+    this.setState(({ projectItems }) => ({
+      projectItems: [
+        ...projectItems.slice(0, index),
+        { ...projectItems[index], [name]: newValue },
+        ...projectItems.slice(index + 1),
+      ],
+    }));
+  }
+
+  addProjectItem(newProjectItem: ProjectItemInterface) {
+    this.setState(({ projectItems }) => ({
+      projectItems: projectItems.concat(newProjectItem),
+    }));
+  }
+
+  removeProjectItem(index: number) {
+    this.setState(({ projectItems }) => ({
+      projectItems: [
+        ...projectItems.slice(0, index),
+        ...projectItems.slice(index + 1),
+      ],
+    }));
+  }
+
   render() {
     return (
       <div className="flex flex-col md:flex-row gap-8">
@@ -118,11 +159,17 @@ class CVLayout extends React.Component<{}, CVState> {
             addEducationItem={this.addEducationItem}
             removeEducationItem={this.removeEducationItem}
           /> */}
-          <ExperienceInputs
+          {/* <ExperienceInputs
             experienceItems={this.state.experienceItems}
             onChangeFunction={this.onChangeExperience}
             addExperienceItem={this.addExperienceItem}
             removeExperienceItem={this.removeExperienceItem}
+          /> */}
+          <ProjectInputs
+            projectItems={this.state.projectItems}
+            onChangeFunction={this.onChangeProject}
+            addProjectItem={this.addProjectItem}
+            removeProjectItem={this.removeProjectItem}
           />
         </div>
         <div className="bg-white h-min py-4 px-8 flex flex-col gap-4 w-[720px]">
@@ -149,7 +196,7 @@ class CVLayout extends React.Component<{}, CVState> {
           />
           <CVEducation educationItems={this.state.educationItems} />
           <CVExperience experienceItems={this.state.experienceItems} />
-          <CVProject />
+          <CVProject projectItems={this.state.projectItems} />
           <CVSkill />
         </div>
       </div>
