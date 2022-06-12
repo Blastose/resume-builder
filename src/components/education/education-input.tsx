@@ -2,6 +2,7 @@ import React from "react";
 import InputMaker from "../util/input-maker";
 import OnChangeFunction from "../interfaces/on-change-function-interface";
 import EducationItemInterface from "../interfaces/education-item-interface";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class EducationInput extends React.Component<
   {
@@ -14,10 +15,17 @@ class EducationInput extends React.Component<
   render() {
     return (
       <div className="flex flex-col">
-        <div className="text-lg text-white">#{this.props.index}</div>
-        <div>Delete</div>
+        <div className="flex justify-between">
+          <div className="text-lg text-white">#{this.props.index + 1}</div>
+          <button
+            className="text-white hover:text-gray-400"
+            onClick={() => console.log("delete")}
+          >
+            <FontAwesomeIcon icon={["fas", "trash-can"]} />
+          </button>
+        </div>
         <InputMaker
-          inputId="institution"
+          inputId={`institution${this.props.index}`}
           labelText="Institution"
           inputValue={this.props.educationItem.institution}
           onChangeFunction={this.props.onChangeFunction}
@@ -25,7 +33,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId="degree"
+          inputId={`degree${this.props.index}`}
           labelText="Degree"
           inputValue={this.props.educationItem.degree}
           onChangeFunction={this.props.onChangeFunction}
@@ -33,7 +41,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId="start"
+          inputId={`start${this.props.index}`}
           labelText="Start:"
           inputValue={this.props.educationItem.start}
           onChangeFunction={this.props.onChangeFunction}
@@ -41,7 +49,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId="end"
+          inputId={`end${this.props.index}`}
           labelText="End:"
           inputValue={this.props.educationItem.end}
           onChangeFunction={this.props.onChangeFunction}
@@ -49,7 +57,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId="location"
+          inputId={`location${this.props.index}`}
           labelText="Location:"
           inputValue={this.props.educationItem.location}
           onChangeFunction={this.props.onChangeFunction}
