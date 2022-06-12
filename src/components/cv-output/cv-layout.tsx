@@ -24,6 +24,7 @@ class CVLayout extends React.Component<{}, CVState> {
     this.onChange = this.onChange.bind(this);
     this.onChangeEducation = this.onChangeEducation.bind(this);
     this.addEducationItem = this.addEducationItem.bind(this);
+    this.removeEducationItem = this.removeEducationItem.bind(this);
   }
 
   onChange(event: React.ChangeEvent<HTMLInputElement>, name: string): void {
@@ -52,8 +53,17 @@ class CVLayout extends React.Component<{}, CVState> {
   }
 
   addEducationItem(newEducationItem: EducationItemInterface) {
-    this.setState(() => ({
-      educationItems: this.state.educationItems.concat(newEducationItem),
+    this.setState(({ educationItems }) => ({
+      educationItems: educationItems.concat(newEducationItem),
+    }));
+  }
+
+  removeEducationItem(index: number) {
+    this.setState(({ educationItems }) => ({
+      educationItems: [
+        ...educationItems.slice(0, index),
+        ...educationItems.slice(index + 1),
+      ],
     }));
   }
 
@@ -69,6 +79,7 @@ class CVLayout extends React.Component<{}, CVState> {
             educationItems={this.state.educationItems}
             onChangeFunction={this.onChangeEducation}
             addEducationItem={this.addEducationItem}
+            removeEducationItem={this.removeEducationItem}
           />
         </div>
         <div className="bg-white h-min py-4 px-8 flex flex-col gap-4 w-[720px]">

@@ -8,6 +8,7 @@ class EducationInput extends React.Component<
   {
     educationItem: EducationItemInterface;
     onChangeFunction: OnChangeFunction;
+    removeItem: (index: number) => void;
     index: number;
   },
   {}
@@ -19,7 +20,7 @@ class EducationInput extends React.Component<
           <div className="text-lg text-white">#{this.props.index + 1}</div>
           <button
             className="text-white hover:text-gray-400"
-            onClick={() => console.log("delete")}
+            onClick={() => this.props.removeItem(this.props.index)}
           >
             <FontAwesomeIcon icon={["fas", "trash-can"]} />
           </button>
