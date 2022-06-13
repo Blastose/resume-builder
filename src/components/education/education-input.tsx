@@ -15,7 +15,7 @@ class EducationInput extends React.Component<
 > {
   render() {
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <div className="text-lg text-white">#{this.props.index + 1}</div>
           <button
