@@ -10,13 +10,13 @@ class PersonalInfo {
   email: string;
 
   constructor() {
-    this.fullName = "Bob Smith";
+    this.fullName = "Full name";
     this.linkedinHref = "https://www.linkedin.com/feed/";
-    this.linkedinText = "bobsmith";
+    this.linkedinText = "name";
     this.githubHref = "https://www.github.com";
-    this.githubText = "bob_smith12";
+    this.githubText = "github_name";
     this.websiteHref = "https://www.google.com";
-    this.websiteText = "mywebsite.com";
+    this.websiteText = "personalwebsite.com";
     this.phoneNumber = "+1-111-111-1111";
     this.email = "example@example.com";
   }
