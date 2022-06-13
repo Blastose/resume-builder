@@ -203,7 +203,10 @@ class CVLayout extends React.Component<{}, CVState> {
     return (
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex">
-          <InputTabs onClickFunction={this.changeActiveInput} />
+          <InputTabs
+            currentActive={this.state.activeInput}
+            onClickFunction={this.changeActiveInput}
+          />
           <div className="bg-sky-700 rounded-br-2xl rounded-bl-2xl p-4 flex flex-col gap-6 min-h-[30%] h-fit min-w-[400px]">
             <CVInputs
               active={this.state.activeInput}
