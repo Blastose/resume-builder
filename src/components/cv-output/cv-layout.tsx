@@ -8,13 +8,11 @@ import CVSkill from "../skill/cv-skill";
 import PersonalInfo from "../personal-info/personal-info";
 import EducationItemInterface from "../interfaces/education-item-interface";
 import ExperienceItemInterface from "../interfaces/experience-item-interface";
-import ExperienceInputs from "../work-experience/experience-inputs";
-import EducationInputs from "../education/education-inputs";
-import ProjectInputs from "../project/project-inputs";
 import ProjectItemInterface from "../interfaces/project-item-interface";
 import SkillItemInterface from "../interfaces/skill-item-interface";
-import SkillInputs from "../skill/skill-inputs";
-import PersonalInfoInput from "../personal-info/personal-info-input";
+import InputTabs from "./inputs-tabs";
+import InputTypes from "../util/input-types";
+import CVInputs from "./cv-inputs";
 
 interface CVState {
   personalInfo: PersonalInfo;
@@ -22,6 +20,7 @@ interface CVState {
   experienceItems: ExperienceItemInterface[];
   projectItems: ProjectItemInterface[];
   skillItems: SkillItemInterface[];
+  activeInput: InputTypes;
 }
 
 class CVLayout extends React.Component<{}, CVState> {
@@ -33,6 +32,7 @@ class CVLayout extends React.Component<{}, CVState> {
       experienceItems: [] as ExperienceItemInterface[],
       projectItems: [] as ProjectItemInterface[],
       skillItems: [] as SkillItemInterface[],
+      activeInput: InputTypes.personal,
     };
     this.onChange = this.onChange.bind(this);
     this.onChangeEducation = this.onChangeEducation.bind(this);
@@ -50,6 +50,8 @@ class CVLayout extends React.Component<{}, CVState> {
     this.onChangeSkill = this.onChangeSkill.bind(this);
     this.addSkillItem = this.addSkillItem.bind(this);
     this.removeSkillItem = this.removeSkillItem.bind(this);
+
+    this.changeActiveInput = this.changeActiveInput.bind(this);
   }
 
   onChange(newValue: string | string[], name: string): void {
@@ -191,38 +193,40 @@ class CVLayout extends React.Component<{}, CVState> {
     }));
   }
 
+  changeActiveInput(newActive: InputTypes) {
+    this.setState({
+      activeInput: newActive,
+    });
+  }
+
   render() {
     return (
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="bg-sky-700 p-4 flex flex-col gap-6">
-          <PersonalInfoInput
-            personalInfo={this.state.personalInfo}
-            onChangeFunction={this.onChange}
-          />
-          <EducationInputs
-            educationItems={this.state.educationItems}
-            onChangeFunction={this.onChangeEducation}
-            addEducationItem={this.addEducationItem}
-            removeEducationItem={this.removeEducationItem}
-          />
-          <ExperienceInputs
-            experienceItems={this.state.experienceItems}
-            onChangeFunction={this.onChangeExperience}
-            addExperienceItem={this.addExperienceItem}
-            removeExperienceItem={this.removeExperienceItem}
-          />
-          <ProjectInputs
-            projectItems={this.state.projectItems}
-            onChangeFunction={this.onChangeProject}
-            addProjectItem={this.addProjectItem}
-            removeProjectItem={this.removeProjectItem}
-          />
-          <SkillInputs
-            skillItems={this.state.skillItems}
-            onChangeFunction={this.onChangeSkill}
-            addSkillItem={this.addSkillItem}
-            removeSkillItem={this.removeSkillItem}
-          />
+        <div className="flex">
+          <InputTabs onClickFunction={this.changeActiveInput} />
+          <div className="bg-sky-700 rounded-br-2xl rounded-bl-2xl p-4 flex flex-col gap-6 min-h-[30%] h-fit min-w-[400px]">
+            <CVInputs
+              active={this.state.activeInput}
+              personalInfo={this.state.personalInfo}
+              onChange={this.onChange}
+              educationItems={this.state.educationItems}
+              onChangeEducation={this.onChangeEducation}
+              addEducationItem={this.addEducationItem}
+              removeEducationItem={this.removeEducationItem}
+              experienceItems={this.state.experienceItems}
+              onChangeExperience={this.onChangeExperience}
+              addExperienceItem={this.addExperienceItem}
+              removeExperienceItem={this.removeExperienceItem}
+              projectItems={this.state.projectItems}
+              onChangeProject={this.onChangeProject}
+              addProjectItem={this.addProjectItem}
+              removeProjectItem={this.removeProjectItem}
+              skillItems={this.state.skillItems}
+              onChangeSkill={this.onChangeSkill}
+              addSkillItem={this.addSkillItem}
+              removeSkillItem={this.removeSkillItem}
+            />
+          </div>
         </div>
         <div className="bg-white py-4 px-8 flex flex-col gap-4 w-[21cm] h-[29.7cm]">
           <CVPersonalInfo
