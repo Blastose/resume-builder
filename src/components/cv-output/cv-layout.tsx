@@ -224,7 +224,7 @@ class CVLayout extends React.Component<{}, CVState> {
             removeSkillItem={this.removeSkillItem}
           />
         </div>
-        <div className="bg-white h-min py-4 px-8 flex flex-col gap-4 w-[720px]">
+        <div className="bg-white py-4 px-8 flex flex-col gap-4 w-[21cm] h-[29.7cm]">
           <CVPersonalInfo
             fullName={this.state.personalInfo.fullName}
             links={{
