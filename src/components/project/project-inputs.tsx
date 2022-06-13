@@ -13,7 +13,7 @@ class ProjectInputs extends React.Component<
   render() {
     return (
       <div className="flex flex-col gap-4">
-        <div className="text-white text-3xl">Work Experience</div>
+        <div className="text-white text-3xl">Projects</div>
         {this.props.projectItems.map((item, index) => {
           // Show inputs for each item
           return (
