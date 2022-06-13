@@ -26,7 +26,7 @@ class EducationInput extends React.Component<
           </button>
         </div>
         <InputMaker
-          inputId={`institution${this.props.index}`}
+          inputId={`educationinstitution${this.props.index}`}
           labelText="Institution"
           inputValue={this.props.educationItem.institution}
           onChangeFunction={this.props.onChangeFunction}
@@ -34,7 +34,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId={`degree${this.props.index}`}
+          inputId={`educationdegree${this.props.index}`}
           labelText="Degree"
           inputValue={this.props.educationItem.degree}
           onChangeFunction={this.props.onChangeFunction}
@@ -42,7 +42,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId={`start${this.props.index}`}
+          inputId={`educationstart${this.props.index}`}
           labelText="Start:"
           inputValue={this.props.educationItem.start}
           onChangeFunction={this.props.onChangeFunction}
@@ -50,7 +50,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId={`end${this.props.index}`}
+          inputId={`educationend${this.props.index}`}
           labelText="End:"
           inputValue={this.props.educationItem.end}
           onChangeFunction={this.props.onChangeFunction}
@@ -58,7 +58,7 @@ class EducationInput extends React.Component<
           index={this.props.index}
         />
         <InputMaker
-          inputId={`location${this.props.index}`}
+          inputId={`educationlocation${this.props.index}`}
           labelText="Location:"
           inputValue={this.props.educationItem.location}
           onChangeFunction={this.props.onChangeFunction}

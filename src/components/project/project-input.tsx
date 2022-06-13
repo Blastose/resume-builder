@@ -59,7 +59,7 @@ class ProjectInput extends React.Component<
           index={this.props.index}
         />
         <InputTextareaMaker
-          inputId={`textarea${this.props.index}`}
+          inputId={`projecttextarea${this.props.index}`}
           labelText="Points"
           inputValue={this.props.projectItem.points.join("\n")}
           onChangeFunction={this.props.onChangeFunction}

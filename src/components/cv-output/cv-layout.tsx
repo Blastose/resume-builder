@@ -14,6 +14,7 @@ import ProjectInputs from "../project/project-inputs";
 import ProjectItemInterface from "../interfaces/project-item-interface";
 import SkillItemInterface from "../interfaces/skill-item-interface";
 import SkillInputs from "../skill/skill-inputs";
+import PersonalInfoInput from "../personal-info/personal-info-input";
 
 interface CVState {
   personalInfo: PersonalInfo;
@@ -51,13 +52,17 @@ class CVLayout extends React.Component<{}, CVState> {
     this.removeSkillItem = this.removeSkillItem.bind(this);
   }
 
-  onChange(newValue: string, name: string): void {
+  onChange(newValue: string | string[], name: string): void {
     this.setState((prevState) => ({
       personalInfo: { ...prevState.personalInfo, [name]: newValue },
     }));
   }
 
-  onChangeEducation(newValue: string, name: string, index?: number): void {
+  onChangeEducation(
+    newValue: string | string[],
+    name: string,
+    index?: number
+  ): void {
     // Hack to make index required
     if (index === undefined) {
       return;
@@ -189,29 +194,29 @@ class CVLayout extends React.Component<{}, CVState> {
   render() {
     return (
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="bg-sky-700 p-4">
-          {/* <PersonalInfoInput
+        <div className="bg-sky-700 p-4 flex flex-col gap-6">
+          <PersonalInfoInput
             personalInfo={this.state.personalInfo}
             onChangeFunction={this.onChange}
-          /> */}
-          {/* <EducationInputs
+          />
+          <EducationInputs
             educationItems={this.state.educationItems}
             onChangeFunction={this.onChangeEducation}
             addEducationItem={this.addEducationItem}
             removeEducationItem={this.removeEducationItem}
-          /> */}
-          {/* <ExperienceInputs
+          />
+          <ExperienceInputs
             experienceItems={this.state.experienceItems}
             onChangeFunction={this.onChangeExperience}
             addExperienceItem={this.addExperienceItem}
             removeExperienceItem={this.removeExperienceItem}
-          /> */}
-          {/* <ProjectInputs
+          />
+          <ProjectInputs
             projectItems={this.state.projectItems}
             onChangeFunction={this.onChangeProject}
             addProjectItem={this.addProjectItem}
             removeProjectItem={this.removeProjectItem}
-          /> */}
+          />
           <SkillInputs
             skillItems={this.state.skillItems}
             onChangeFunction={this.onChangeSkill}
